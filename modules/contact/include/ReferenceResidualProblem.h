@@ -25,8 +25,8 @@ public:
   ReferenceResidualProblem(const InputParameters & params);
   virtual ~ReferenceResidualProblem();
 
-  virtual void initialSetup();
-  virtual void timestepSetup();
+  virtual void initialSetup() override;
+  virtual void timestepSetup() override;
   void updateReferenceResidual();
   virtual MooseNonlinearConvergenceReason checkNonlinearConvergence(std::string & msg,
                                                                     const PetscInt it,
@@ -38,6 +38,7 @@ public:
                                                                     const Real abstol,
                                                                     const PetscInt nfuncs,
                                                                     const PetscInt max_funcs,
+																																		const PetscBool force_iteration,
                                                                     const Real ref_resid,
                                                                     const Real div_threshold);
 
